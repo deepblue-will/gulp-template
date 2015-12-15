@@ -32,9 +32,6 @@ module.exports = {
   mainBowerFiles: {
     options: {filter: /.*js$/}
   },
-  uglify: {
-    options: {preserveComments: 'license'}
-  },
   jade: {
     src: "app/views/*.jade",
     target: "dist",

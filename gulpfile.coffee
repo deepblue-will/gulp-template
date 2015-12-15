@@ -4,6 +4,7 @@ $ = require('gulp-load-plugins')()
 browserify = require('browserify')
 babelify = require('babelify');
 source = require('vinyl-source-stream')
+streamify = require('gulp-streamify')
 runSequence = require('run-sequence')
 rimraf = require('rimraf')
 configs = require('./build_resource/config')
@@ -27,7 +28,7 @@ js = (isMinify = false) ->
   .on "error", (err) -> console.log "Error: #{err.message}"
   .pipe source configs.js.file
 
-  stream.pipe $.uglify() if isMinify
+  stream.pipe streamify $.uglify() if isMinify
   stream.pipe g.dest configs.js.target
 
 g.task 'default', () ->
